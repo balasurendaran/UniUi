@@ -120,6 +120,38 @@ export const formConfig = {
         },
       ],
     },
+    {
+      key: "date_time_section",
+      title: "Date and Time",
+      visible: true,
+      fieldGroups: [
+        {
+          key: "date_time_row_1",
+          fields: [
+            {
+              type: "datePicker",
+              name: "appointmentDate",
+              label: "Appointment Date",
+              placeholder: "Select a date",
+              span: 12,
+              validation: {
+                required: "Date is required",
+              },
+            },
+            {
+              type: "timePicker",
+              name: "appointmentTime",
+              label: "Appointment Time",
+              placeholder: "Select a time",
+              span: 12,
+              validation: {
+                required: "Time is required",
+              },
+            },
+          ],
+        },
+      ],
+    },
   ],
   submitButton: {
     children: "Submit Form",

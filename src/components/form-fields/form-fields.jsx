@@ -52,6 +52,23 @@ const FormFields = () => {
   // Watch all form values
   const allValues = watch();
 
+  function serializeValues(values) {
+    if (!values || typeof values !== "object") return values;
+    const result = Array.isArray(values) ? [] : {};
+    for (const key in values) {
+      const val = values[key];
+      if (val && typeof val === "object" && typeof val.format === "function") {
+        // AntD DatePicker/TimePicker value (Moment/Dayjs)
+        result[key] = val.format("YYYY-MM-DD HH:mm:ss");
+      } else if (val && typeof val === "object") {
+        result[key] = serializeValues(val);
+      } else {
+        result[key] = val;
+      }
+    }
+    return result;
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -185,7 +202,7 @@ const FormFields = () => {
           }}
         >
           {JSON.stringify(
-            { values: allValues, touchedFields, dirtyFields },
+            { values: serializeValues(allValues), touchedFields, dirtyFields },
             null,
             2
           )}

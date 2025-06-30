@@ -3,14 +3,17 @@ import { TimePicker } from "antd";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
-const onChange = (time, timeString) => {
-  console.log(time, timeString);
-};
 
-const UniUiTimePicker = () => (
+const UniUiTimePicker = ({ value, onChange, ...props }) => (
   <TimePicker
-    onChange={onChange}
+    value={value ? dayjs(value, "HH:mm:ss") : null}
+    format="HH:mm:ss"
+    onChange={(time) => {
+      onChange && onChange(time ? time.format("HH:mm:ss") : null);
+    }}
+    {...props}
     defaultOpenValue={dayjs("00:00:00", "HH:mm:ss")}
   />
 );
+
 export default UniUiTimePicker;
