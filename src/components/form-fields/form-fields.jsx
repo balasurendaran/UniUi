@@ -110,6 +110,7 @@ const FormFields = () => {
                                         field.validation
                                       )}
                                       {...controllerField}
+                                      type={field.type}
                                       label={field.label}
                                       error={fieldState.error}
                                       placeholder={field.placeholder}
