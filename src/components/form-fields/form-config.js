@@ -69,6 +69,42 @@ export const formConfig = {
           key: "user_row_2",
           fields: [
             {
+              type: "radio",
+              name: "userType",
+              label: "User Type",
+              span: 24,
+              options: [
+                { value: "admin", label: "Admin" },
+                { value: "user", label: "User" },
+                { value: "guest", label: "Guest" },
+              ],
+              validation: { required: "User type is required" },
+            },
+          ],
+        },
+        {
+          key: "password_row_1",
+          fields: [
+            {
+              type: "password",
+              name: "password",
+              label: "Password",
+              placeholder: "Enter your password",
+              span: 24,
+              validation: {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters",
+                },
+              },
+            },
+          ],
+        },
+        {
+          key: "user_row_3",
+          fields: [
+            {
               type: "email",
               name: "email",
               label: "Email",
