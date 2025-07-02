@@ -1,5 +1,4 @@
 import { ONLY_LETTERS } from "components/constants/form-configs";
-import { DownOutlined, SmileOutlined } from "@ant-design/icons";
 
 const userRoleOptions = [
   {
@@ -9,7 +8,6 @@ const userRoleOptions = [
   {
     key: "2",
     label: "2nd menu item (disabled)",
-    // icon: <SmileOutlined />,
     disabled: true,
   },
   {
@@ -22,6 +20,18 @@ const userRoleOptions = [
     danger: true,
     label: "a danger item",
   },
+];
+
+const actions = [
+  { type: "add", label: "Add", icon: "plus", size: "small" },
+  { type: "edit", label: "Edit", icon: "edit", size: "small" },
+  { type: "delete", label: "Delete", icon: "delete", size: "small" },
+  { type: "view", label: "View", icon: "eye", size: "small" },
+  // { type: "hide", label: "Hide", icon: "eye-invisible", size: "small" },
+  { type: "copy", label: "Copy", icon: "copy", size: "small" },
+  // { type: "duplicate", label: "Duplicate", icon: "copy", size: "small" },
+  { type: "moveUp", label: "Move Up", icon: "arrow-up", size: "small" },
+  { type: "moveDown", label: "Move Down", icon: "arrow-down", size: "small" },
 ];
 
 export const formConfig = {
@@ -185,6 +195,7 @@ export const formConfig = {
           ],
         },
       ],
+      actions: actions,
     },
     {
       key: "account_section",
@@ -279,6 +290,30 @@ export const formConfig = {
               span: 12,
               validation: {
                 required: "Please upload a file using dragger",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      key: "actions_section",
+      title: "",
+      visible: true,
+      fieldGroups: [
+        {
+          key: "actions_row_1",
+          fields: [
+            {
+              type: "button",
+              name: "customButton",
+              label: "Custom Action",
+              span: 24,
+              buttonProps: {
+                type: "primary",
+                children: "Custom Button",
+                onClick: () => alert("Button clicked!"),
+                style: { width: "100%" },
               },
             },
           ],

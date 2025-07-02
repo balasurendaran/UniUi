@@ -13,6 +13,8 @@ import UniUiOTP from "components/otp";
 import UniUiCardWithOptions from "components/card-with-options";
 import UniUiCheckBox from "components/checkbox";
 import { formConfig } from "components/form-fields/form-config";
+import JSONViewer from "components/json-viewer";
+import UniUiActionButtons from "components/action-buttons";
 
 const FormFields = () => {
   const {
@@ -24,10 +26,13 @@ const FormFields = () => {
   } = useForm({ mode: "onChange", criteriaMode: "all" }); // or "onBlur" for blur validation
 
   const fieldMapper = {
+    label: ({ label }) => <label>{label}</label>,
+    button: UniUiButton,
     text: UniUiInput,
     textArea: UniUiInput,
     email: UniUiInput,
     password: UniUiInput,
+    number: UniUiInput,
     switch: UniUiSwitch,
     checkbox: UniUiCheckBox,
     radio: UniUiRadio,
@@ -38,6 +43,7 @@ const FormFields = () => {
     otP: UniUiOTP,
     cardWithOptions: UniUiCardWithOptions,
     fileUpload: UniUiFileUpload,
+    actions: UniUiActionButtons,
     // Add more field types as needed
   };
 
@@ -77,6 +83,11 @@ const FormFields = () => {
           return (
             <div key={section.key} className="card">
               <h2>{section.title}</h2>
+              {section.actions && section.actions.length > 0 && (
+                <div style={{ marginBottom: 16 }}>
+                  <UniUiActionButtons actions={section.actions} />
+                </div>
+              )}
               {section.fieldGroups.map((fieldGroup, idx) => {
                 return (
                   <div
@@ -85,6 +96,14 @@ const FormFields = () => {
                   >
                     {fieldGroup.fields.map((field) => (
                       <div key={field.name} className="field-group-col">
+                        {field.label && (
+                          <label
+                            htmlFor={field.name}
+                            style={{ display: "block", marginBottom: 4 }}
+                          >
+                            {field.label}
+                          </label>
+                        )}
                         {fieldMapper[field.type] &&
                           (() => {
                             const FieldComponent = fieldMapper[field.type];
@@ -210,6 +229,7 @@ const FormFields = () => {
             2
           )}
         </pre>
+        <JSONViewer data={allValues} />
       </div>
     </div>
   );
