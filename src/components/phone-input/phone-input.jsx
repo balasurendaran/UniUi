@@ -10,11 +10,11 @@ const validator = (_, { valid }) => {
   return Promise.reject("Invalid phone number");
 };
 
-const UniUiPhoneInput = () => {
+const UniUiPhoneInput = ({ ...props }) => {
   return (
     <FormItem name="phone" rules={[{ validator }]}>
       <ConfigProvider locale={en_GB}>
-        <PhoneInput enableSearch />
+        <PhoneInput enableSearch {...props} />
       </ConfigProvider>
     </FormItem>
   );

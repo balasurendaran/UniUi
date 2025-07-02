@@ -25,10 +25,11 @@ const FormFields = () => {
 
   const fieldMapper = {
     text: UniUiInput,
+    textArea: UniUiInput,
     email: UniUiInput,
     password: UniUiInput,
-    fileUpload: UniUiFileUpload,
     switch: UniUiSwitch,
+    checkbox: UniUiCheckBox,
     radio: UniUiRadio,
     dropdown: UniUiDropdown,
     datePicker: UniUiDatePicker,
@@ -36,7 +37,7 @@ const FormFields = () => {
     phoneInput: UniUiPhoneInput,
     otP: UniUiOTP,
     cardWithOptions: UniUiCardWithOptions,
-    checkbox: UniUiCheckBox,
+    fileUpload: UniUiFileUpload,
     // Add more field types as needed
   };
 
@@ -117,6 +118,7 @@ const FormFields = () => {
                                       size={field.size || "small"}
                                       options={field.options}
                                       value={controllerField.value}
+                                      dragger={field.dragger}
                                     />
                                   )}
                                 />

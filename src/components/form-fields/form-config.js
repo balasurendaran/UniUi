@@ -80,6 +80,13 @@ export const formConfig = {
               ],
               validation: { required: "User type is required" },
             },
+            {
+              type: "switch",
+              name: "newsletter",
+              label: "Subscribe to Newsletter",
+              span: 24,
+              defaultValue: false,
+            },
           ],
         },
         {
@@ -116,6 +123,62 @@ export const formConfig = {
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                   message: "Invalid email address",
+                },
+              },
+            },
+          ],
+        },
+        {
+          key: "user_row_4",
+          fields: [
+            {
+              type: "textArea",
+              name: "bio",
+              label: "Bio",
+              placeholder: "Tell us about yourself",
+              span: 24,
+              validation: {
+                required: "Bio is required",
+                minLength: {
+                  value: 10,
+                  message: "Bio must be at least 10 characters",
+                },
+                maxLength: {
+                  value: 300,
+                  message: "Bio cannot exceed 300 characters",
+                },
+              },
+            },
+          ],
+        },
+        {
+          key: "user_row_5",
+          fields: [
+            {
+              type: "phoneInput",
+              name: "phone",
+              label: "Phone Number",
+              placeholder: "Enter your phone number",
+              span: 12,
+              validation: {
+                required: "Phone number is required",
+                pattern: {
+                  value: /^[0-9]{10,15}$/,
+                  message: "Enter a valid phone number",
+                },
+              },
+            },
+            {
+              type: "otP",
+              name: "otp",
+              label: "OTP",
+              placeholder: "Enter the OTP",
+              span: 12,
+              validation: {
+                required: "OTP is required",
+                pattern: {
+                  value: /^[0-9]{4,6}$/,
+                  message: "Enter a valid OTP",
                 },
               },
             },
@@ -182,6 +245,40 @@ export const formConfig = {
               span: 12,
               validation: {
                 required: "Time is required",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      key: "upload_section",
+      title: "File Uploads",
+      visible: true,
+      fieldGroups: [
+        {
+          key: "upload_row_1",
+          fields: [
+            {
+              type: "fileUpload",
+              dragger: false,
+              name: "file",
+              label: "File Upload",
+              placeholder: "Upload a file",
+              span: 12,
+              validation: {
+                required: "Please upload a file",
+              },
+            },
+            {
+              type: "fileUpload",
+              dragger: true,
+              name: "draggerFile",
+              label: "Dragger Upload",
+              placeholder: "Drag and drop a file here or click to upload",
+              span: 12,
+              validation: {
+                required: "Please upload a file using dragger",
               },
             },
           ],
