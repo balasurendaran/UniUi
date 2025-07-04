@@ -1,12 +1,98 @@
-# React + Vite
+# Uni UI Form Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A form builder for Uni UI using React and Ant Design.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Getting Started
 
-## Expanding the ESLint configuration
+1. **Clone the repository**
+   ```sh
+   git clone https://github.com/balasurendaran/UniUi.git
+   cd UniUi
+   ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+2. **Install dependencies**
+   ```sh
+   npm install
+   ```
+
+3. **Run in development mode**
+   ```sh
+   npm run dev
+   ```
+
+---
+
+## 🛠️ Contribution Guide
+
+We welcome contributions! Please follow these steps:
+
+### 1. Fork & Clone
+
+- Fork the repository on GitHub.
+- Clone your fork locally.
+
+### 2. Create a Branch
+
+```sh
+git checkout -b feature/your-feature-name
+```
+
+### 3. Make Your Changes
+
+- Follow the existing code style.
+- Add or update tests if needed.
+- Update documentation if you add new features.
+
+### 4. Lint & Build
+
+```sh
+npm run lint
+npm run build
+```
+
+### 5. Commit & Push
+
+```sh
+git add .
+git commit -m "Describe your changes"
+git push origin feature/your-feature-name
+```
+
+### 6. Create a Pull Request
+
+- Go to your fork on GitHub and open a Pull Request to the `main` branch.
+
+---
+
+## ✅ Contribution Checklist
+
+- [ ] Code builds and runs locally (`npm run dev` and `npm run build`)
+- [ ] Lint passes (`npm run lint`)
+- [ ] All tests pass (if applicable)
+- [ ] Documentation updated (if needed)
+- [ ] No sensitive data or secrets committed
+- [ ] PR description clearly explains the change
+
+---
+
+## 📦 Publishing Checklist (for maintainers)
+
+- [ ] Update version in `package.json`
+- [ ] Build the project (`npm run build`)
+- [ ] Check `dist` folder for correct output
+- [ ] Run `npm publish --access public`
+- [ ] Tag the release on GitHub
+
+---
+
+## 🤝 Code of Conduct
+
+Please be respectful and considerate in all interactions.
+
+---
+
+## 📄 License
+
+MIT © Bala Surendaran
