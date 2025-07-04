@@ -14,4 +14,21 @@ export default defineConfig({
       // utils: path.resolve(__dirname, 'src/utils'),
     },
   },
+  build: {
+    lib: {
+      entry: "src/main.jsx",
+      name: "UniUiFormBuilder",
+      fileName: "uni-ui-form-builder",
+      formats: ["es", "umd"],
+    },
+    rollupOptions: {
+      external: ["react", "react-dom"],
+      output: {
+        globals: {
+          react: "React",
+          "react-dom": "ReactDOM",
+        },
+      },
+    },
+  },
 });
