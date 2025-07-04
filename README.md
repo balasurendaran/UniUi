@@ -7,12 +7,14 @@ A form builder for Uni UI using React and Ant Design.
 ## 🚀 Getting Started
 
 1. **Clone the repository**
+
    ```sh
    git clone https://github.com/balasurendaran/UniUi.git
    cd UniUi
    ```
 
 2. **Install dependencies**
+
    ```sh
    npm install
    ```
