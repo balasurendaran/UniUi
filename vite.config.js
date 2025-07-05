@@ -16,7 +16,7 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: "src/main.jsx",
+      entry: "src/index.js",
       name: "UniUiFormBuilder",
       fileName: "uni-ui-form-builder",
       formats: ["es", "umd"],

@@ -32,7 +32,6 @@
     "@cloudinary/url-gen": "^1.21.0",
     "antd": "^5.25.4",
     "antd-phone-input": "^0.3.14",
-    "path": "^0.12.7",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.59.0"
