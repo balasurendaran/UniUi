@@ -74,6 +74,7 @@ export const formConfig = {
               validation: { required: "Last name is required" },
             },
           ],
+          actions: actions,
         },
         {
           key: "user_row_2",

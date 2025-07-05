@@ -2,7 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import { Form } from "antd";
+import { formConfig } from "components/form-fields/form-config";
 import FormFields from "components/form-fields";
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
-      <FormFields />
+      <FormFields formConfig={formConfig} />
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>

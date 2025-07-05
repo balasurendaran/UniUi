@@ -12,21 +12,30 @@ import UniUiPhoneInput from "components/phone-input";
 import UniUiOTP from "components/otp";
 import UniUiCardWithOptions from "components/card-with-options";
 import UniUiCheckBox from "components/checkbox";
-import { formConfig } from "components/form-fields/form-config";
-import JSONViewer from "components/json-viewer";
 import UniUiActionButtons from "components/action-buttons";
+import UniUiLabel from "components/label";
+import { useRHFSectionActions } from "hooks/useRHFSectionActions";
 
-const FormFields = () => {
+const FormFields = ({ formConfig }) => {
   const {
     register,
     handleSubmit,
     formState: { errors, touchedFields, dirtyFields },
     watch,
     control,
+    reset,
+    setValue,
+    getValues,
   } = useForm({ mode: "onChange", criteriaMode: "all" }); // or "onBlur" for blur validation
 
+  const { handleAction } = useRHFSectionActions({
+    reset,
+    setValue,
+    getValues,
+  });
+
   const fieldMapper = {
-    label: ({ label }) => <label>{label}</label>,
+    label: UniUiLabel,
     button: UniUiButton,
     text: UniUiInput,
     textArea: UniUiInput,
@@ -59,6 +68,13 @@ const FormFields = () => {
   // Watch all form values
   const allValues = watch();
 
+  /**
+   * Serialize a nested object of form values, converting any
+   * AntD DatePicker/TimePicker values (Moment/Dayjs) to strings
+   * in the format "YYYY-MM-DD HH:mm:ss".
+   * @param {object} values - The object to serialize.
+   * @returns {object} The serialized object.
+   */
   function serializeValues(values) {
     if (!values || typeof values !== "object") return values;
     const result = Array.isArray(values) ? [] : {};
@@ -85,7 +101,10 @@ const FormFields = () => {
               <h2>{section.title}</h2>
               {section.actions && section.actions.length > 0 && (
                 <div style={{ marginBottom: 16 }}>
-                  <UniUiActionButtons actions={section.actions} />
+                  <UniUiActionButtons
+                    actions={section.actions}
+                    onAction={handleAction}
+                  />
                 </div>
               )}
               {section.fieldGroups.map((fieldGroup, idx) => {
@@ -93,16 +112,35 @@ const FormFields = () => {
                   <div
                     key={`${fieldGroup.key + idx}`}
                     className="field-group-row"
+                    style={{
+                      background: "#f3f3f3",
+                      padding: 16,
+                      marginBottom: 30,
+                      borderRadius: 8,
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      flexDirection: "column",
+                      boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 10px 0px",
+                      gap: 16,
+                    }}
                   >
+                    {fieldGroup.actions && fieldGroup.actions.length > 0 && (
+                      <div style={{ marginBottom: 16 }}>
+                        <UniUiActionButtons
+                          actions={fieldGroup.actions}
+                          onAction={handleAction}
+                        />
+                      </div>
+                    )}
                     {fieldGroup.fields.map((field) => (
                       <div key={field.name} className="field-group-col">
                         {field.label && (
-                          <label
-                            htmlFor={field.name}
-                            style={{ display: "block", marginBottom: 4 }}
-                          >
-                            {field.label}
-                          </label>
+                          <UniUiLabel
+                            name={field.name}
+                            label={field.label}
+                            control={control}
+                          />
                         )}
                         {fieldMapper[field.type] &&
                           (() => {
@@ -224,12 +262,15 @@ const FormFields = () => {
           }}
         >
           {JSON.stringify(
-            { values: serializeValues(allValues), touchedFields, dirtyFields },
+            {
+              values: serializeValues(allValues),
+              touchedFields,
+              dirtyFields,
+            },
             null,
             2
           )}
         </pre>
-        <JSONViewer data={allValues} />
       </div>
     </div>
   );
