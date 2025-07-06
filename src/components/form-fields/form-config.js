@@ -321,11 +321,39 @@ export const formConfig = {
         },
       ],
     },
+    {
+      key: "image_upload_section",
+      title: "Image Upload",
+      visible: true,
+      fieldGroups: [
+        {
+          key: "image_upload_row_1",
+          fields: [
+            {
+              type: "fileUpload",
+              dragger: true,
+              name: "image",
+              label: "Upload Image",
+              placeholder: "Drag and drop an image or click to upload",
+              span: 24,
+              validation: {
+                required: "Please upload an image",
+              },
+            },
+          ],
+        },
+      ],
+    },
   ],
   submitButton: {
     children: "Submit Form",
     type: "primary",
     disabled: (values) => !values?.terms,
+    style: { marginTop: "20px" },
+  },
+  previewValues: {
+    title: "Preview Values",
+    visible: true,
     style: { marginTop: "20px" },
   },
 };
