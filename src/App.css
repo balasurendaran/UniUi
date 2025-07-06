@@ -55,6 +55,15 @@
   display: flex;
   gap: 16px; /* gutter space between fields */
   margin-bottom: 16px;
+  background: #f3f3f3;
+  padding: 16px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 10px 0px;
 }
 
 .field-group-col {

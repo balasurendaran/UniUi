@@ -89,18 +89,6 @@ const FormFields = ({ formConfig }) => {
                   <div
                     key={`${fieldGroup.key + idx}`}
                     className="field-group-row"
-                    style={{
-                      background: "#f3f3f3",
-                      padding: 16,
-                      marginBottom: 30,
-                      borderRadius: 8,
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      flexDirection: "column",
-                      boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 10px 0px",
-                      gap: 16,
-                    }}
                   >
                     {fieldGroup.actions && fieldGroup.actions.length > 0 && (
                       <div style={{ marginBottom: 16 }}>
