@@ -46,6 +46,7 @@ export const formConfig = {
           fields: [
             {
               type: "text",
+              className: "",
               name: "firstName",
               label: "First Name",
               placeholder: "Enter your first name",
@@ -67,6 +68,7 @@ export const formConfig = {
             },
             {
               type: "text",
+              className: "",
               name: "lastName",
               label: "Last Name",
               placeholder: "Enter your last name",
@@ -81,6 +83,7 @@ export const formConfig = {
           fields: [
             {
               type: "radio",
+              className: "",
               name: "userType",
               label: "User Type",
               span: 24,
@@ -93,6 +96,7 @@ export const formConfig = {
             },
             {
               type: "switch",
+              className: "",
               name: "newsletter",
               label: "Subscribe to Newsletter",
               span: 24,
@@ -105,6 +109,7 @@ export const formConfig = {
           fields: [
             {
               type: "password",
+              className: "",
               name: "password",
               label: "Password",
               placeholder: "Enter your password",
@@ -124,6 +129,7 @@ export const formConfig = {
           fields: [
             {
               type: "email",
+              className: "",
               name: "email",
               label: "Email",
               placeholder: "Enter your email",
@@ -144,6 +150,7 @@ export const formConfig = {
           fields: [
             {
               type: "textArea",
+              className: "",
               name: "bio",
               label: "Bio",
               placeholder: "Tell us about yourself",
@@ -167,6 +174,7 @@ export const formConfig = {
           fields: [
             {
               type: "phoneInput",
+              className: "",
               name: "phone",
               label: "Phone Number",
               placeholder: "Enter your phone number",
@@ -181,6 +189,7 @@ export const formConfig = {
             },
             {
               type: "otP",
+              className: "",
               name: "otp",
               label: "OTP",
               placeholder: "Enter the OTP",
@@ -207,6 +216,7 @@ export const formConfig = {
           fields: [
             {
               type: "dropdown",
+              className: "",
               name: "role",
               label: "User Role",
               span: 8,
@@ -219,6 +229,7 @@ export const formConfig = {
             },
             {
               type: "checkbox",
+              className: "",
               name: "terms",
               label: "Agreement",
               span: 16,
@@ -241,6 +252,7 @@ export const formConfig = {
           fields: [
             {
               type: "datePicker",
+              className: "",
               name: "appointmentDate",
               label: "Appointment Date",
               placeholder: "Select a date",
@@ -251,6 +263,7 @@ export const formConfig = {
             },
             {
               type: "timePicker",
+              className: "",
               name: "appointmentTime",
               label: "Appointment Time",
               placeholder: "Select a time",
@@ -273,6 +286,7 @@ export const formConfig = {
           fields: [
             {
               type: "fileUpload",
+              className: "",
               dragger: false,
               name: "file",
               label: "File Upload",
@@ -284,6 +298,7 @@ export const formConfig = {
             },
             {
               type: "fileUpload",
+              className: "",
               dragger: true,
               name: "draggerFile",
               label: "Dragger Upload",
@@ -307,6 +322,7 @@ export const formConfig = {
           fields: [
             {
               type: "button",
+              className: "",
               name: "customButton",
               label: "Custom Action",
               span: 24,
@@ -331,6 +347,7 @@ export const formConfig = {
           fields: [
             {
               type: "fileUpload",
+              className: "",
               dragger: true,
               name: "image",
               label: "Upload Image",
@@ -348,11 +365,13 @@ export const formConfig = {
   submitButton: {
     children: "Submit Form",
     type: "primary",
+    className: "",
     disabled: (values) => !values?.terms,
     style: { marginTop: "20px" },
   },
   previewValues: {
     title: "Preview Values",
+    className: "preview-values",
     visible: true,
     style: { marginTop: "20px" },
   },
