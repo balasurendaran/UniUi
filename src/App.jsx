@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import { formConfig } from "components/form-fields/form-config";
 import FormFields from "components/form-fields";
+import IconsGallery from "components/icon-gallery";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -28,6 +29,7 @@ function App() {
         </p>
       </div>
       <FormFields formConfig={formConfig} />
+      <IconsGallery />
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
