@@ -25,13 +25,13 @@ const userRoleOptions = [
 const actions = [
   { type: "add", label: "Add", icon: "plus", size: "small" },
   { type: "edit", label: "Edit", icon: "edit", size: "small" },
-  { type: "delete", label: "Delete", icon: "delete", size: "small" },
+  { type: "delete", label: "Delete", icon: "trashBin", size: "small" },
   { type: "view", label: "View", icon: "eye", size: "small" },
-  // { type: "hide", label: "Hide", icon: "eye-invisible", size: "small" },
-  { type: "copy", label: "Copy", icon: "copy", size: "small" },
-  // { type: "duplicate", label: "Duplicate", icon: "copy", size: "small" },
-  { type: "moveUp", label: "Move Up", icon: "arrow-up", size: "small" },
-  { type: "moveDown", label: "Move Down", icon: "arrow-down", size: "small" },
+  // { type: "hide", label: "Hide", icon: "eyeSlash", size: "small" },
+  { type: "copy", label: "Copy", icon: "fileCopy", size: "small" },
+  // { type: "duplicate", label: "Duplicate", icon: "fileClone", size: "small" },
+  { type: "moveUp", label: "Move Up", icon: "arrowUp", size: "small" },
+  { type: "moveDown", label: "Move Down", icon: "arrowDown", size: "small" },
 ];
 
 export const formConfig = {
@@ -40,6 +40,9 @@ export const formConfig = {
       key: "user_section",
       title: "User Information",
       visible: true,
+      className: "user-section",
+      description: "Please fill in your personal information",
+      actions: actions,
       fieldGroups: [
         {
           key: "user_row_1",
@@ -47,6 +50,7 @@ export const formConfig = {
             {
               type: "text",
               className: "",
+              readOnly: false,
               name: "firstName",
               label: "First Name",
               placeholder: "Enter your first name",
@@ -69,6 +73,7 @@ export const formConfig = {
             {
               type: "text",
               className: "",
+              readOnly: false,
               name: "lastName",
               label: "Last Name",
               placeholder: "Enter your last name",
@@ -84,6 +89,7 @@ export const formConfig = {
             {
               type: "radio",
               className: "",
+              readOnly: false,
               name: "userType",
               label: "User Type",
               span: 24,
@@ -97,6 +103,7 @@ export const formConfig = {
             {
               type: "switch",
               className: "",
+              readOnly: false,
               name: "newsletter",
               label: "Subscribe to Newsletter",
               span: 24,
@@ -110,6 +117,7 @@ export const formConfig = {
             {
               type: "password",
               className: "",
+              readOnly: false,
               name: "password",
               label: "Password",
               placeholder: "Enter your password",
@@ -130,6 +138,7 @@ export const formConfig = {
             {
               type: "email",
               className: "",
+              readOnly: false,
               name: "email",
               label: "Email",
               placeholder: "Enter your email",
@@ -151,6 +160,7 @@ export const formConfig = {
             {
               type: "textArea",
               className: "",
+              readOnly: false,
               name: "bio",
               label: "Bio",
               placeholder: "Tell us about yourself",
@@ -175,6 +185,7 @@ export const formConfig = {
             {
               type: "phoneInput",
               className: "",
+              readOnly: false,
               name: "phone",
               label: "Phone Number",
               placeholder: "Enter your phone number",
@@ -190,6 +201,7 @@ export const formConfig = {
             {
               type: "otP",
               className: "",
+              readOnly: false,
               name: "otp",
               label: "OTP",
               placeholder: "Enter the OTP",
@@ -205,18 +217,20 @@ export const formConfig = {
           ],
         },
       ],
-      actions: actions,
     },
     {
       key: "account_section",
       title: "Account Settings",
       visible: (values) => values.userType === "admin",
+      className: "",
+      description: "",
       fieldGroups: [
         {
           fields: [
             {
               type: "dropdown",
               className: "",
+              readOnly: false,
               name: "role",
               label: "User Role",
               span: 8,
@@ -230,6 +244,7 @@ export const formConfig = {
             {
               type: "checkbox",
               className: "",
+              readOnly: false,
               name: "terms",
               label: "Agreement",
               span: 16,
@@ -246,6 +261,8 @@ export const formConfig = {
       key: "date_time_section",
       title: "Date and Time",
       visible: true,
+      className: "",
+      description: "",
       fieldGroups: [
         {
           key: "date_time_row_1",
@@ -253,6 +270,7 @@ export const formConfig = {
             {
               type: "datePicker",
               className: "",
+              readOnly: false,
               name: "appointmentDate",
               label: "Appointment Date",
               placeholder: "Select a date",
@@ -264,6 +282,7 @@ export const formConfig = {
             {
               type: "timePicker",
               className: "",
+              readOnly: false,
               name: "appointmentTime",
               label: "Appointment Time",
               placeholder: "Select a time",
@@ -280,6 +299,8 @@ export const formConfig = {
       key: "upload_section",
       title: "File Uploads",
       visible: true,
+      className: "",
+      description: "",
       fieldGroups: [
         {
           key: "upload_row_1",
@@ -287,6 +308,7 @@ export const formConfig = {
             {
               type: "fileUpload",
               className: "",
+              readOnly: false,
               dragger: false,
               name: "file",
               label: "File Upload",
@@ -299,6 +321,7 @@ export const formConfig = {
             {
               type: "fileUpload",
               className: "",
+              readOnly: false,
               dragger: true,
               name: "draggerFile",
               label: "Dragger Upload",
@@ -316,6 +339,8 @@ export const formConfig = {
       key: "actions_section",
       title: "",
       visible: true,
+      className: "",
+      description: "",
       fieldGroups: [
         {
           key: "actions_row_1",
@@ -323,6 +348,7 @@ export const formConfig = {
             {
               type: "button",
               className: "",
+              readOnly: false,
               name: "customButton",
               label: "Custom Action",
               span: 24,
@@ -341,6 +367,8 @@ export const formConfig = {
       key: "image_upload_section",
       title: "Image Upload",
       visible: true,
+      className: "",
+      description: "",
       fieldGroups: [
         {
           key: "image_upload_row_1",
@@ -348,6 +376,7 @@ export const formConfig = {
             {
               type: "fileUpload",
               className: "",
+              readOnly: false,
               dragger: true,
               name: "image",
               label: "Upload Image",
@@ -366,12 +395,14 @@ export const formConfig = {
     children: "Submit Form",
     type: "primary",
     className: "",
+    readOnly: false,
     disabled: (values) => !values?.terms,
     style: { marginTop: "20px" },
   },
   previewValues: {
     title: "Preview Values",
     className: "preview-values",
+    readOnly: false,
     visible: true,
     style: { marginTop: "20px" },
   },

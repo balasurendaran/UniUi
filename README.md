@@ -93,6 +93,10 @@ git push origin feature/your-feature-name
 
 Please be respectful and considerate in all interactions.
 
+## Icon Reference
+
+For icons used in this project, please refer to [Flowbite Icons](https://flowbite.com/icons/)
+
 ---
 
 ## 📄 License
