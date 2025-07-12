@@ -296,46 +296,6 @@ export const formConfig = {
       ],
     },
     {
-      key: "upload_section",
-      title: "File Uploads",
-      visible: true,
-      className: "",
-      description: "",
-      fieldGroups: [
-        {
-          key: "upload_row_1",
-          fields: [
-            {
-              type: "fileUpload",
-              className: "",
-              readOnly: false,
-              dragger: false,
-              name: "file",
-              label: "File Upload",
-              placeholder: "Upload a file",
-              span: 12,
-              validation: {
-                required: "Please upload a file",
-              },
-            },
-            {
-              type: "fileUpload",
-              className: "",
-              readOnly: false,
-              dragger: true,
-              name: "draggerFile",
-              label: "Dragger Upload",
-              placeholder: "Drag and drop a file here or click to upload",
-              span: 12,
-              validation: {
-                required: "Please upload a file using dragger",
-              },
-            },
-          ],
-        },
-      ],
-    },
-    {
       key: "actions_section",
       title: "",
       visible: true,
@@ -364,26 +324,30 @@ export const formConfig = {
       ],
     },
     {
-      key: "image_upload_section",
-      title: "Image Upload",
+      key: "upload_section",
+      title: "File Uploads",
       visible: true,
       className: "",
       description: "",
       fieldGroups: [
         {
-          key: "image_upload_row_1",
+          key: "upload_row_1",
           fields: [
             {
               type: "fileUpload",
               className: "",
               readOnly: false,
-              dragger: true,
-              name: "image",
-              label: "Upload Image",
-              placeholder: "Drag and drop an image or click to upload",
-              span: 24,
+              dragger: false,
+              name: "file",
+              label: "File Upload",
+              placeholder: "Upload a file",
+              span: 12,
               validation: {
-                required: "Please upload an image",
+                required: "Please upload a file",
+              },
+              handleCustomRequest: (file) => {
+                // Your custom upload functionality goes here
+                console.log("file upload", file);
               },
             },
           ],
