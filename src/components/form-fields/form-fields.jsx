@@ -1,21 +1,12 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import UniUiButton from "components/button";
-import UniUiInput from "components/input";
-import UniUiFileUpload from "components/file-upload";
-import UniUiSwitch from "components/switch";
-import UniUiRadio from "components/radio";
-import UniUiDropdown from "components/dropdown";
-import UniUiDatePicker from "components/date-picker";
-import UniUiTimePicker from "components/time-picker";
-import UniUiPhoneInput from "components/phone-input";
-import UniUiOTP from "components/otp";
-import UniUiCardWithOptions from "components/card-with-options";
-import UniUiCheckBox from "components/checkbox";
 import UniUiActionButtons from "components/action-buttons";
 import UniUiLabel from "components/label";
 import { useRHFSectionActions } from "hooks/useRHFSectionActions";
 import UniUiPreviewValues from "components/preview-values";
+import { fieldMapper } from "components/form-fields/field-mapper";
+import Typography from "components/typography/typography";
 
 const FormFields = ({ formConfig }) => {
   const {
@@ -35,28 +26,6 @@ const FormFields = ({ formConfig }) => {
     getValues,
   });
 
-  const fieldMapper = {
-    label: UniUiLabel,
-    button: UniUiButton,
-    text: UniUiInput,
-    textArea: UniUiInput,
-    email: UniUiInput,
-    password: UniUiInput,
-    number: UniUiInput,
-    switch: UniUiSwitch,
-    checkbox: UniUiCheckBox,
-    radio: UniUiRadio,
-    dropdown: UniUiDropdown,
-    datePicker: UniUiDatePicker,
-    timePicker: UniUiTimePicker,
-    phoneInput: UniUiPhoneInput,
-    otP: UniUiOTP,
-    cardWithOptions: UniUiCardWithOptions,
-    fileUpload: UniUiFileUpload,
-    actions: UniUiActionButtons,
-    // Add more field types as needed
-  };
-
   const onSubmit = async (data) => {
     // Handle form submission
     console.log(data);
@@ -72,143 +41,143 @@ const FormFields = ({ formConfig }) => {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {formConfig.sections.map((section) => {
-          return (
-            <div key={section.key} className="card">
-              <h2>{section.title}</h2>
-              {section.actions && section.actions.length > 0 && (
-                <div style={{ marginBottom: 16 }}>
-                  <UniUiActionButtons
-                    actions={section.actions}
-                    onAction={handleAction}
-                  />
-                </div>
-              )}
-              {section.fieldGroups.map((fieldGroup, idx) => {
-                return (
-                  <div
-                    key={`${fieldGroup.key + idx}`}
-                    className="field-group-row"
-                  >
-                    {fieldGroup.actions && fieldGroup.actions.length > 0 && (
-                      <div style={{ marginBottom: 16 }}>
-                        <UniUiActionButtons
-                          actions={fieldGroup.actions}
-                          onAction={handleAction}
-                        />
-                      </div>
-                    )}
-                    {fieldGroup.fields.map((field) => (
-                      <div key={field.name} className="field-group-col">
-                        {field.label && (
-                          <UniUiLabel
-                            name={field.name}
-                            label={field.label}
-                            control={control}
-                          />
+        {formConfig.sections.map(
+          ({ key, title, actions, visible, className, fieldGroups }) => {
+            return (
+              visible && (
+                <div key={key} className={`${className || "card"}`}>
+                  <h2>{title}</h2>
+                  {actions && actions.length > 0 && (
+                    <div style={{ marginBottom: 16 }}>
+                      <UniUiActionButtons
+                        actions={actions}
+                        onAction={handleAction}
+                      />
+                    </div>
+                  )}
+                  {fieldGroups.map(({ key, actions, fields }, idx) => {
+                    return (
+                      <div key={`${key + idx}`} className="field-group-row">
+                        {actions && actions.length > 0 && (
+                          <div style={{ marginBottom: 16 }}>
+                            <UniUiActionButtons
+                              actions={actions}
+                              onAction={handleAction}
+                            />
+                          </div>
                         )}
-                        {fieldMapper[field.type] &&
-                          (() => {
-                            const FieldComponent = fieldMapper[field.type];
-                            const errorObj = getError(errors, field.name);
-                            const isTouched = !!getError(
-                              touchedFields,
-                              field.name
-                            );
-                            const isDirty = !!getError(dirtyFields, field.name);
-
-                            return (
-                              <>
-                                <Controller
-                                  name={field.name}
+                        {fields.map(
+                          ({
+                            name,
+                            label,
+                            type,
+                            validation,
+                            size,
+                            placeholder,
+                            options,
+                            dragger,
+                            ...field
+                          }) => (
+                            <div key={name} className="field-group-col">
+                              {label && (
+                                <UniUiLabel
+                                  name={name}
+                                  label={label}
                                   control={control}
-                                  rules={field.validation}
-                                  render={({
-                                    field: controllerField,
-                                    fieldState,
-                                  }) => (
-                                    <FieldComponent
-                                      {...register(
-                                        field.name,
-                                        field.validation
-                                      )}
-                                      {...controllerField}
-                                      type={field.type}
-                                      label={field.label}
-                                      error={fieldState.error}
-                                      placeholder={field.placeholder}
-                                      size={field.size || "small"}
-                                      options={field.options}
-                                      value={controllerField.value}
-                                      dragger={field.dragger}
-                                    />
-                                  )}
                                 />
+                              )}
+                              {fieldMapper[type] &&
+                                (() => {
+                                  const FieldComponent = fieldMapper[type];
+                                  const errorObj = getError(errors, name);
+                                  const isTouched = !!getError(
+                                    touchedFields,
+                                    name
+                                  );
+                                  const isDirty = !!getError(dirtyFields, name);
 
-                                {errorObj && errorObj.types
-                                  ? Object.values(errorObj.types).map(
-                                      (msg, idx) => (
-                                        <div
-                                          key={`${idx} + ${errorObj.type}`}
-                                          className="field-error"
-                                          style={{
-                                            color: "red",
-                                            fontSize: 12,
-                                            marginTop: 4,
-                                          }}
-                                        >
-                                          {msg}
+                                  return (
+                                    <>
+                                      <Controller
+                                        name={name}
+                                        control={control}
+                                        rules={validation}
+                                        render={({
+                                          field: controllerField,
+                                          fieldState,
+                                        }) => (
+                                          <FieldComponent
+                                            {...register(
+                                              field.name,
+                                              field.validation
+                                            )}
+                                            {...controllerField}
+                                            type={type}
+                                            label={label}
+                                            error={fieldState.error}
+                                            placeholder={placeholder}
+                                            size={size || "small"}
+                                            options={options} // for dropdown/radio
+                                            value={controllerField.value}
+                                            checked={controllerField.value} // for checkbox/radio
+                                            dragger={dragger} // for file upload
+                                          />
+                                        )}
+                                      />
+
+                                      {errorObj && (
+                                        <>
+                                          {errorObj.types
+                                            ? Object.values(errorObj.types).map(
+                                                (msg, idx) => (
+                                                  <Typography
+                                                    variant="caption"
+                                                    error
+                                                    gutterBottom
+                                                    key={`${idx}-${msg}`}
+                                                  >
+                                                    {msg}
+                                                  </Typography>
+                                                )
+                                              )
+                                            : errorObj.message && (
+                                                <Typography
+                                                  variant="caption"
+                                                  error
+                                                  gutterBottom
+                                                  key="single-message"
+                                                >
+                                                  {errorObj.message}
+                                                </Typography>
+                                              )}
+                                        </>
+                                      )}
+                                      {isTouched && (
+                                        <div style={{ color: "blue" }}>
+                                          Touched
                                         </div>
-                                      )
-                                    )
-                                  : errorObj &&
-                                    errorObj.message && (
-                                      <div
-                                        key={errorObj.type}
-                                        className="field-error"
-                                        style={{
-                                          color: "red",
-                                          fontSize: 12,
-                                          marginTop: 4,
-                                        }}
-                                      >
-                                        {errorObj.message}
-                                      </div>
-                                    )}
-                                {isTouched && (
-                                  <div style={{ color: "blue" }}>Touched</div>
-                                )}
-                                {isDirty && (
-                                  <div style={{ color: "orange" }}>
-                                    Dirty (Value changed)
-                                  </div>
-                                )}
-                              </>
-                            );
-                          })()}
+                                      )}
+                                      {isDirty && (
+                                        <div style={{ color: "orange" }}>
+                                          Dirty (Value changed)
+                                        </div>
+                                      )}
+                                    </>
+                                  );
+                                })()}
+                            </div>
+                          )
+                        )}
                       </div>
-                    ))}
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
+                    );
+                  })}
+                </div>
+              )
+            );
+          }
+        )}
         <UniUiButton type="submit">Submit</UniUiButton>
       </form>
-      {/* <form onSubmit={handleSubmit(onSubmit)}>
-        <UniUiButton className="uni-ui-button" />
-        <UniUiFileUpload fileList={fileList} />
-        <UniUiSwitch />
-        <UniUiRadio />
-        <UniUiInput />
-        <UniUiDropdown />
-        <UniUiDatePicker />
-        <UniUiTimePicker />
-        <UniUiPhoneInput />
-        <UniUiOTP />
-        <UniUiCardWithOptions />
-      </form> */}
 
       {/* Preview Mode */}
       {formConfig?.previewValues?.visible && (
