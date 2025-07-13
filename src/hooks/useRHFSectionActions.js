@@ -4,9 +4,6 @@
  */
 
 export function useRHFSectionActions({ reset, setValue, getValues }) {
-  console.log("🚀 ~ useRHFSectionActions ~ getValues:", getValues);
-  console.log("🚀 ~ useRHFSectionActions ~ setValue:", setValue);
-  console.log("🚀 ~ useRHFSectionActions ~ reset:", reset);
   /**
    * Handles a section action based on its type.
    * @param {object} action - The action object (from your config).
