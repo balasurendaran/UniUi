@@ -22,17 +22,17 @@ const userRoleOptions = [
   },
 ];
 
-const actions = [
-  { type: "add", label: "Add", icon: "plus", size: "small" },
-  { type: "edit", label: "Edit", icon: "edit", size: "small" },
-  { type: "delete", label: "Delete", icon: "trashBin", size: "small" },
-  { type: "view", label: "View", icon: "eye", size: "small" },
-  // { type: "hide", label: "Hide", icon: "eyeSlash", size: "small" },
-  { type: "copy", label: "Copy", icon: "fileCopy", size: "small" },
-  // { type: "duplicate", label: "Duplicate", icon: "fileClone", size: "small" },
-  { type: "moveUp", label: "Move Up", icon: "arrowUp", size: "small" },
-  { type: "moveDown", label: "Move Down", icon: "arrowDown", size: "small" },
-];
+// const actions = [
+//   { type: "add", label: "Add", icon: "plus", size: "small" },
+//   { type: "edit", label: "Edit", icon: "edit", size: "small" },
+//   { type: "delete", label: "Delete", icon: "trashBin", size: "small" },
+//   { type: "view", label: "View", icon: "eye", size: "small" },
+//   // { type: "hide", label: "Hide", icon: "eyeSlash", size: "small" },
+//   { type: "copy", label: "Copy", icon: "fileCopy", size: "small" },
+//   // { type: "duplicate", label: "Duplicate", icon: "fileClone", size: "small" },
+//   { type: "moveUp", label: "Move Up", icon: "arrowUp", size: "small" },
+//   { type: "moveDown", label: "Move Down", icon: "arrowDown", size: "small" },
+// ];
 
 export const formConfig = {
   sections: [
@@ -42,14 +42,14 @@ export const formConfig = {
       visible: true,
       className: "user-section",
       description: "Please fill in your personal information",
-      actions: actions,
+      // actions: actions,
       fieldGroups: [
         {
           key: "user_row_1",
           fields: [
             {
               type: "text",
-              className: "",
+              className: "firstname-field",
               readOnly: false,
               name: "firstName",
               label: "First Name",
@@ -81,7 +81,7 @@ export const formConfig = {
               validation: { required: "Last name is required" },
             },
           ],
-          actions: actions,
+          // actions: actions,
         },
         {
           key: "user_row_2",
@@ -326,7 +326,7 @@ export const formConfig = {
     {
       key: "upload_section",
       title: "File Uploads",
-      visible: true,
+      visible: false,
       className: "",
       description: "",
       fieldGroups: [
