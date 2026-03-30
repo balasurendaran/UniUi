@@ -12,7 +12,7 @@ export default defineConfig({
     viteCompression({
       algorithm: "gzip",
       ext: ".gz",
-      deleteOriginFile: false, // set to true if you want to delete original files
+      deleteOriginFile: false,
     }),
   ],
   resolve: {
@@ -20,8 +20,6 @@ export default defineConfig({
       components: path.resolve(__dirname, "src/components"),
       hooks: path.resolve(__dirname, "src/hooks"),
       assets: path.resolve(__dirname, "src/assets"),
-      // You can add more like:
-      // utils: path.resolve(__dirname, 'src/utils'),
     },
   },
   build: {
@@ -32,11 +30,30 @@ export default defineConfig({
       formats: ["es", "umd"],
     },
     rollupOptions: {
-      external: ["react", "react-dom"],
+      // Externalize all peerDependencies — consumers provide these
+      external: [
+        "react",
+        "react/jsx-runtime",
+        "react-dom",
+        "react-dom/client",
+        "react-hook-form",
+        "antd",
+        /^antd\/.*/,
+        "antd-phone-input",
+        "@ant-design/icons",
+        /^@ant-design\/.*/,
+        "rc-field-form",
+        /^rc-.*/,
+      ],
       output: {
         globals: {
           react: "React",
+          "react/jsx-runtime": "ReactJsxRuntime",
           "react-dom": "ReactDOM",
+          "react-hook-form": "ReactHookForm",
+          antd: "antd",
+          "antd-phone-input": "AntdPhoneInput",
+          "@ant-design/icons": "AntDesignIcons",
         },
       },
     },
