@@ -1,24 +1,37 @@
 {
   "name": "uni-ui-form-builder",
-  "description": "A form builder for Uni UI using React and Ant Design",
-  "version": "1.0.2",
+  "description": "A visual drag-and-drop form builder for React + Ant Design — design, preview, and export JSON formConfig in minutes",
+  "version": "1.1.0",
   "type": "module",
-  "main": "dist/uni-ui-form-builder.js",
-  "module": "dist/uni-ui-form-builder.umd.cjs",
+  "main": "dist/uni-ui-form-builder.umd.cjs",
+  "module": "dist/uni-ui-form-builder.js",
+  "exports": {
+    ".": {
+      "import": "./dist/uni-ui-form-builder.js",
+      "require": "./dist/uni-ui-form-builder.umd.cjs"
+    }
+  },
   "files": [
-    "dist",
+    "dist/uni-ui-form-builder.js",
+    "dist/uni-ui-form-builder.umd.cjs",
+    "dist/uni-ui-form-builder.css",
     "README.md"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/balasurendaran/UniUi.git"
+    "url": "git+https://github.com/balasurendaran/UniUi.git"
   },
   "keywords": [
     "react",
     "form",
-    "builder",
+    "form-builder",
+    "drag-and-drop",
     "antd",
-    "ui"
+    "ant-design",
+    "ui",
+    "form-generator",
+    "json-schema",
+    "no-code"
   ],
   "scripts": {
     "dev": "vite",
@@ -27,26 +40,33 @@
     "preview": "vite preview",
     "prepare": "husky"
   },
+  "peerDependencies": {
+    "antd": ">=5.0.0",
+    "antd-phone-input": ">=0.3.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "react-hook-form": ">=7.0.0"
+  },
   "dependencies": {
     "@cloudinary/react": "^1.14.3",
-    "@cloudinary/url-gen": "^1.21.0",
-    "antd": "^5.25.4",
-    "antd-phone-input": "^0.3.14",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-hook-form": "^7.59.0"
+    "@cloudinary/url-gen": "^1.21.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
+    "antd": "^5.25.4",
+    "antd-phone-input": "^0.3.14",
     "eslint": "^9.25.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-hook-form": "^7.59.0",
     "vite": "^6.3.5",
     "vite-plugin-compression": "^0.5.1"
   },
