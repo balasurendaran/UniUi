@@ -1,0 +1,42 @@
+# Dev / source files
+src/
+public/
+.husky/
+.github/
+
+# Config files (not needed at runtime)
+vite.config.js
+eslint.config.js
+.eslintignore
+.prettierrc
+
+# Vite-copied public assets (not needed by consumers)
+dist/screenshots/
+dist/vite.svg
+dist/*.gz
+
+# Node / build artefacts
+node_modules/
+*.log
+
+# Editor / OS
+.DS_Store
+.vscode/
+*.swp
+
+
+# Config files (not needed at runtime)
+vite.config.js
+eslint.config.js
+.eslintignore
+.prettierrc
+
+# Node / build artefacts
+node_modules/
+*.log
+*.gz
+
+# Editor / OS
+.DS_Store
+.vscode/
+*.swp
