@@ -1,6 +1,13 @@
 # 🏗️ UniUi Form Builder
 
-> Build powerful, dynamic forms with **UniUi** — a React + Ant Design form builder library. This guide covers how to use the visual builder, all supported field types, and how to export a plug-and-play `formConfig`.
+[![npm version](https://img.shields.io/npm/v/uni-ui-form-builder?color=7c3aed&label=npm)](https://www.npmjs.com/package/uni-ui-form-builder)
+[![npm downloads](https://img.shields.io/npm/dm/uni-ui-form-builder?color=06b6d4)](https://www.npmjs.com/package/uni-ui-form-builder)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-4f46e5?logo=github)](https://balasurendaran.github.io/UniUi/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+
+> Build powerful, dynamic forms with **UniUi** — a React + Ant Design form builder library. Design, preview, and export a plug-and-play `formConfig` in minutes.
+
+🔗 **[Live Demo →](https://balasurendaran.github.io/UniUi/)**&emsp;📦 **[npm →](https://www.npmjs.com/package/uni-ui-form-builder)**&emsp;⭐ **[GitHub →](https://github.com/balasurendaran/UniUi)**
 
 ---
 
@@ -630,6 +637,23 @@ git push origin feature/your-feature-name
 - [ ] Check `dist` folder for correct output
 - [ ] Run `npm publish --access public`
 - [ ] Tag the release on GitHub
+
+---
+
+## 🚀 Deploying the Live Demo
+
+The live demo is hosted on **GitHub Pages** at:
+👉 **https://balasurendaran.github.io/UniUi/**
+
+To update the demo after making changes:
+
+```bash
+npm run deploy
+```
+
+This builds the app with `vite.config.demo.js` (base: `/UniUi/`) and pushes to the `gh-pages` branch automatically.
+
+> **First-time setup:** Go to your repo → **Settings → Pages → Source → branch: `gh-pages` / root** → Save.
 
 ---
 
