@@ -65,7 +65,7 @@ const JSONViewer = ({ values }) => {
         let formatData = JSON.stringify(JSON.parse(formattedData));
         formatData = formatData
           .replace(/\\/g, "\\\\")
-          .replace(/\u0008/g, "\\b")
+          .replace(/[\b]/g, "\\b")
           .replace(/\t/g, "\\t")
           .replace(/\n/g, "\\n")
           .replace(/\f/g, "\\f")
@@ -77,7 +77,7 @@ const JSONViewer = ({ values }) => {
         let formatData = JSON.stringify(data);
         formatData = formatData
           .replace(/\\/g, "\\\\")
-          .replace(/\u0008/g, "\\b")
+          .replace(/[\b]/g, "\\b")
           .replace(/\t/g, "\\t")
           .replace(/\n/g, "\\n")
           .replace(/\f/g, "\\f")
@@ -129,7 +129,7 @@ const JSONViewer = ({ values }) => {
   const isJSON = (str) => {
     try {
       JSON.parse(str);
-    } catch (e) {
+    } catch (_e) {
       return false;
     }
     return true;

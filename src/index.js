@@ -1,5 +1,6 @@
 // Export all main components you want to make public from your package
 
+export { default as FormBuilder } from "components/form-builder";
 export { default as FormFields } from "components/form-fields/form-fields.jsx";
 export { default as UniUiButton } from "components/button";
 export { default as UniUiInput } from "components/input";

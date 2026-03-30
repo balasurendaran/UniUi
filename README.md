@@ -1,8 +1,127 @@
 # 🏗️ UniUi Form Builder
 
-> Build powerful, dynamic forms with **UniUi** — a React + Ant Design form builder library. This guide covers how to use the library like a drag-and-drop form builder, what fields are currently supported, and a roadmap of what's missing.
+> Build powerful, dynamic forms with **UniUi** — a React + Ant Design form builder library. This guide covers how to use the visual builder, all supported field types, and how to export a plug-and-play `formConfig`.
 
 ---
+
+## 🎨 Visual Form Builder (No-Code)
+
+UniUi ships with a **SurveyJS-style visual Form Builder** — a full-screen, no-code editor to design, preview, and export forms in minutes.
+
+### How to launch it
+
+```jsx
+import { FormBuilder } from 'uni-ui-form-builder';
+
+export default function App() {
+  return <FormBuilder />;   // full-screen 3-panel UI
+}
+```
+
+Or with an export callback:
+```jsx
+<FormBuilder onExport={(formConfig) => console.log(formConfig)} />
+```
+
+---
+
+### 🖼️ Screenshots
+
+#### Empty state — 3-panel layout
+![Form Builder empty state](./public/screenshots/fb-empty.png)
+
+#### Designer tab — fields added as rows
+![Fields added as rows](./public/screenshots/fb-fields.png)
+
+#### Multi-field row — two fields side-by-side
+![Multi-field row](./public/screenshots/fb-multirow.png)
+
+#### Properties panel — configure selected field
+![Properties panel](./public/screenshots/fb-properties.png)
+
+#### JSON Config tab — copy-ready formConfig
+![JSON Config tab](./public/screenshots/fb-json.png)
+
+---
+
+### Builder UI — 3 Panels
+
+| Panel | What it does |
+|---|---|
+| **Left — Field Palette** | Click to add as new row · ⊕ adds to selected row |
+| **Center — Designer tab** | Live form preview with row management and drag-and-drop |
+| **Center — 👁 Preview tab** | Fully interactive form — fill, validate, see submitted values |
+| **Center — JSON tab** | Generated `formConfig` with ⎘ Copy to Clipboard |
+| **Right — Properties** | Configure label, name, placeholder, required, min/max, options, span |
+
+---
+
+### ✨ Feature Highlights
+
+#### Multi-field rows — fields side by side
+Each row can hold **multiple fields** displayed side-by-side. Column widths are auto-distributed evenly (based on the 24-column grid) and can be adjusted individually in the Properties panel.
+
+- Click any palette tile → adds a **new row** with that field
+- Click **⊕ Add Field to Row** in a row's toolbar → adds into the **same row**
+- Use the **⊕ button** that appears next to each palette tile when a row is selected
+
+#### Drag-and-drop reordering
+Drag any field (using the **⠿ handle**) to:
+- **Insert before** another field in the same row
+- **Move to a different row** (drop on the row)
+- **Create a new standalone row** — drop onto the dashed drop zone that appears between rows
+
+#### 👁 Interactive Preview mode
+Switch to the **Preview tab** to see and interact with the real form:
+1. Fill in the actual fields (real validation fires live)
+2. Required, min/max length, and pattern rules show error messages
+3. Hit **Submit** — the submitted values appear on the right panel as JSON
+4. Hit **↺ Reset** to test again with different values
+
+```jsx
+// The same onSubmit prop works in your production code:
+<FormFields
+  formConfig={formConfig}
+  onSubmit={(data) => console.log(data)}  // receives the form values on submit
+/>
+```
+
+#### Duplicate fields and rows
+- **⧉ on a field** — duplicates it in the same row (with `_copy` suffix on name)
+- **⧉ on a row toolbar** — duplicates the entire row (all fields) below it
+
+---
+
+### Workflow
+
+1. **Add fields** — click tiles in the left palette  
+2. **Multi-column rows** — hit ⊕ in a row's toolbar or the ⊕ next to a palette tile  
+3. **Drag to rearrange** — drag fields between rows or reorder within a row  
+4. **Configure** — click any field → edit properties on the right panel  
+5. **Preview** — switch to 👁 Preview to fill the form and test validation  
+6. **Export** — switch to `{ }` JSON Config, then hit **⎘ Copy formConfig**  
+7. **Use it** — paste into your production code:
+
+```jsx
+import { FormFields } from 'uni-ui-form-builder';
+const formConfig = { /* paste here */ };
+
+<FormFields formConfig={formConfig} onSubmit={(data) => save(data)} />
+```
+
+---
+
+### Supported Field Types
+
+| Group | Types |
+|---|---|
+| **Text Inputs** | Text, Textarea, Email, Password, Number |
+| **Selection** | Dropdown, Radio Group, Checkbox |
+| **Date & Time** | Date Picker, Time Picker |
+| **Special** | Phone Number, Toggle Switch, OTP Input, File Upload |
+
+---
+
 
 ## 📦 Installation
 

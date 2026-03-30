@@ -1,39 +1,61 @@
-import React from "react";
-import { UploadOutlined, InboxOutlined } from "@ant-design/icons";
-import { Button, Upload } from "antd";
+import { Upload, Button } from "antd";
+import { UploadOutlined } from "@ant-design/icons";
+import { useController } from "react-hook-form";
 
-const { Dragger } = Upload;
+const UniUiUpload = ({
+  name,
+  // control,
+  successMessage = "File uploaded successfully!",
+  fileUpload,
+  fileURLLink,
+  beforeUpload,
+  ...rest
+}) => {
+  console.log("🚀 ~ fileUpload:", fileUpload);
+  const {
+    field: { onChange, value },
+    fieldState: { error },
+  } = useController({
+    name,
+    // control,
+  });
+  console.log("UniUiUpload component rendered", fileURLLink);
 
-const UniUiFileUpload = ({ fileList, dragger = false, ...props }) => {
-  if (dragger) {
-    return (
-      <Dragger
-        action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
-        defaultFileList={fileList}
-        {...props}
-      >
-        <p className="ant-upload-drag-icon">
-          <InboxOutlined />
-        </p>
-        <p className="ant-upload-text">
-          Click or drag file to this area to upload
-        </p>
-        <p className="ant-upload-hint">Support for a single or bulk upload.</p>
-      </Dragger>
-    );
-  }
+  const customRequest = async ({ file, onSuccess, onError }) => {
+    try {
+      const event = { target: { files: [file] } };
+      const uploadedURL = await fileUpload(event, successMessage);
+      onChange(uploadedURL); // Update react-hook-form value
+      onSuccess(uploadedURL);
+    } catch (err) {
+      onError(err);
+    }
+  };
+
   return (
-    <Upload
-      action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
-      listType="picture"
-      defaultFileList={fileList}
-      {...props}
-    >
-      <Button type="primary" icon={<UploadOutlined />}>
-        Upload
-      </Button>
-    </Upload>
+    <div>
+      <Upload
+        name={name}
+        customRequest={customRequest}
+        beforeUpload={beforeUpload}
+        showUploadList={false}
+        maxCount={1}
+        {...rest}
+      >
+        <Button icon={<UploadOutlined />}>Click to Upload</Button>
+      </Upload>
+      {error && <div style={{ color: "red" }}>{error.message}</div>}
+      {value && (
+        <div style={{ marginTop: 8 }}>
+          <img
+            src={value}
+            alt="Uploaded preview"
+            style={{ maxWidth: "100%", maxHeight: 200 }}
+          />
+        </div>
+      )}
+    </div>
   );
 };
 
-export default UniUiFileUpload;
+export default UniUiUpload;
