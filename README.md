@@ -1,15 +1,29 @@
-# 🏗️ UniUi Form Builder
+<p align="center">
+  <img src="https://raw.githubusercontent.com/balasurendaran/UniUi/main/public/logo-banner.png" alt="UniUi Form Builder" height="80" />
+</p>
 
-[![npm version](https://img.shields.io/npm/v/uni-ui-form-builder?color=7c3aed&label=npm)](https://www.npmjs.com/package/uni-ui-form-builder)
-[![npm downloads](https://img.shields.io/npm/dm/uni-ui-form-builder?color=06b6d4)](https://www.npmjs.com/package/uni-ui-form-builder)
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-4f46e5?logo=github)](https://balasurendaran.github.io/UniUi/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![npm version](https://img.shields.io/npm/v/uni-ui-form-builder?color=534AB7&label=npm)](https://www.npmjs.com/package/uni-ui-form-builder)
+[![npm downloads](https://img.shields.io/npm/dm/uni-ui-form-builder?color=7F77DD)](https://www.npmjs.com/package/uni-ui-form-builder)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-534AB7?logo=github)](https://balasurendaran.github.io/UniUi/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-AFA9EC)](LICENSE)
 
 > Build powerful, dynamic forms with **UniUi** — a React + Ant Design form builder library. Design, preview, and export a plug-and-play `formConfig` in minutes.
 
 🔗 **[Live Demo →](https://balasurendaran.github.io/UniUi/)**&emsp;📦 **[npm →](https://www.npmjs.com/package/uni-ui-form-builder)**&emsp;⭐ **[GitHub →](https://github.com/balasurendaran/UniUi)**
 
 ---
+
+## 🎨 Brand Color Palette
+
+| Swatch | Name | Hex |
+|--------|------|-----|
+| ![#1A1A2E](https://placehold.co/18x18/1A1A2E/1A1A2E.png) | Navy (Background) | `#1A1A2E` |
+| ![#534AB7](https://placehold.co/18x18/534AB7/534AB7.png) | Purple (Primary) | `#534AB7` |
+| ![#7F77DD](https://placehold.co/18x18/7F77DD/7F77DD.png) | Light Purple (Accent) | `#7F77DD` |
+| ![#AFA9EC](https://placehold.co/18x18/AFA9EC/AFA9EC.png) | Cursor Highlight | `#AFA9EC` |
+
+---
+
 
 ## 🎨 Visual Form Builder (No-Code)
 
